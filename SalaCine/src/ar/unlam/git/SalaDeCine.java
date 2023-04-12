@@ -15,8 +15,7 @@ public class SalaDeCine {
 	// PUNTO 3 "3. Consultar si una butaca está ocupada (referida por fila y asiento)"
     private static void verAsientoOcupado() {
     	boolean flag;
-    	int verFila;
-    	int verColumna;
+    	int verFila, verColumna;
     	do {
     		System.out.println("Ingrese numero de la fila");
     		verFila = scanner.nextInt();
@@ -25,7 +24,7 @@ public class SalaDeCine {
     		flag = cine.verAsientoOcupado(verFila, verColumna);
     	} while (!flag);
     	
-    	cine.verAsientoOcupado(verFila, verColumna);
+    	//cine.verAsientoOcupado(verFila, verColumna);
     }
     
 	// PUNTO 4 "4. Ocupar una butaca determinada, siempre que ésta no esté previamenteocupada."
@@ -40,9 +39,10 @@ public class SalaDeCine {
             comprarColumna = scanner.nextInt();
             flag = cine.verificarAsiento(comprarFila, comprarColumna);
         } while (!flag);
-        
         cine.comprarAsiento(comprarFila, comprarColumna);
+        System.out.println("\nCompra realizada con exito");
     }
+    
 	// PUNTO 5 "5. Consultar la cantidad total de butacas ocupadas"
     private static void totalDeAsientosOcupados() {
     	cine.totalDeAsientosOcupados();
@@ -53,13 +53,17 @@ public class SalaDeCine {
     	int cantidadPersonas;
     	System.out.println("Ingrese cantidad de personas que desea acomodar");
     	cantidadPersonas = scanner.nextInt();
-    	cine.hayEspacioPara(cantidadPersonas);
+    	if (cantidadPersonas > 1) {
+    	cine.hayEspacioPara(cantidadPersonas);}
+    	else {
+        	System.out.println("Ingrese una cantidad mayor a 1 persona");
+    	}
     }
 
     public static void main(String[] args) {
     	// PUNTO 1 "1. Crearla con la cantidad de butacas totales y cantidad de filas"
         String menu = "\n1. Consultar si la sala esta vacia\n" +
-                "2. Consultar si una butaca está ocupada\n" +
+                "2. Consultar si una butaca esta ocupada\n" +
                 "3. Comprar butaca\n" +
                 "4. Consultar la cantidad total de butacas ocupadas\n" +
                 "5. Consultar si es posible acomodar a un grupo de X personas, en forma contigua, en la misma fila:\n"

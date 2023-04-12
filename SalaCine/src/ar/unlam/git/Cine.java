@@ -110,22 +110,22 @@ public class Cine {
 	// PUNTO 6 "6. Consultar si es posible acomodar a un grupo de X personas, en forma contigua, en la misma fila:"
 	public void hayEspacioPara(int cantidadPersonas) {
 	    boolean encontrado = false;
+	    int asientosOcupados = 0;
+	    int primerAsientoOcupado = -1;
 	    for (int i = 1; i < sala.length; i++) {
-	        int asientosOcupados = 0;
-	        int primerAsientoLibre = -1;
 	        for (int j = 1; j < sala[0].length; j++) {
 	            if (!sala[i][j].equals("O")) {
 	                asientosOcupados = 0;
-	                primerAsientoLibre = -1;
+	                primerAsientoOcupado = -1;
 	            } else {
-	                if (primerAsientoLibre == -1) {
-	                    primerAsientoLibre = j;
+	                if (primerAsientoOcupado == -1) {
+	                	primerAsientoOcupado = j;
 	                }
 	                asientosOcupados++;
 	                if (asientosOcupados == cantidadPersonas) {
 	                    encontrado = true;
-	                    int ultimoAsientoLibre = j;
-	                    System.out.println("Se puede acomodar a " + cantidadPersonas + " personas en la fila " + i + " desde el asiento " + primerAsientoLibre + " hasta el asiento " + ultimoAsientoLibre);
+	                    int ultimoAsientoOcupado = j;
+	                    System.out.println("Se puede acomodar a " + cantidadPersonas + " personas en la fila " + i + " desde el asiento " + primerAsientoOcupado + " hasta el asiento " + ultimoAsientoOcupado);
 	                    break;
 	                }
 	            }
